@@ -1,1 +1,1 @@
-"# Gestore-Task" 
+# Gestore-Task
