@@ -14,6 +14,7 @@ class tasks extends Model
 
     protected $fillable = [
         "nome",
-        "descrizione"
+        "descrizione",
+        "completato"
     ];
 }

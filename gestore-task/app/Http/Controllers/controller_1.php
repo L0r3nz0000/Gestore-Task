@@ -19,8 +19,9 @@ class controller_1 extends Controller
     public function addTask(Request $request) {
         $nome = isset($request->nome) ? $request->nome : null;
         $descrizione = isset($request->descrizione) ? $request->descrizione : null;
+        $completato = isset($request->completato) ? $request->completato : null;
         
-        if(!$nome && !$descrizione) {
+        if($nome != null && $descrizione != null && $completato != null) {
             return view('errore');
         }
 
@@ -28,7 +29,8 @@ class controller_1 extends Controller
 
         $task::create([
             "nome" => $nome,
-            "descrizione" => $descrizione
+            "descrizione" => $descrizione,
+            "completato" => $completato
         ]);
         return redirect("/");
     }
@@ -36,7 +38,7 @@ class controller_1 extends Controller
     public function deleteTask(Request $request) {
         $id = isset($request->id) ? $request->id : null;
         
-        
+
 
     }
 }

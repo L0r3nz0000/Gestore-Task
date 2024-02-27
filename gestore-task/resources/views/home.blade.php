@@ -35,6 +35,9 @@
     <label for="exampleInputPassword1" class="form-label">Descrizione</label>
     <input name="descrizione" type="text" class="form-control" id="exampleInputPassword1" required>
   </div>
+  <div class="mb-3">
+    <input name="completato" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  </div>
   <button type="submit" class="btn btn-primary">OK</button>
 </form>
 
