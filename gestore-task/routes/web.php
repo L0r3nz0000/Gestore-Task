@@ -15,8 +15,8 @@ use App\Http\Controllers\controller_1;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/test',[controller_1::class,'index2']);
 
 Route::get('/',[controller_1::class,'index']);
+Route::post('/add_task',[controller_1::class,'addTask']);
+Route::get('/get_tasks',[controller_1::class,'getTasks']);
