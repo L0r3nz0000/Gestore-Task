@@ -8,20 +8,16 @@ use App\Models\tasks;
 class controller_1 extends Controller
 {
     public function index(Request $request) {
-        // dd("ciao");
-        // if (isset($request->_GET["prova"])) {
-        //     dd($request->_GET["prova"]);
-        // }
         $t = tasks::all();
         return view("home", compact("t"));
     }
 
     public function addTask(Request $request) {
-        $nome = isset($request->nome) ? $request->nome : null;
-        $descrizione = isset($request->descrizione) ? $request->descrizione : null;
-        $completato = isset($request->completato) ? $request->completato : null;
+        $nome = $request->has('nome') ? $request->input('nome') : null;
+        $descrizione = $request->has('descrizione') ? $request->input('descrizione') : null;
+        $completato = $request->has('completato');
         
-        if($nome != null && $descrizione != null && $completato != null) {
+        if($nome == null || $descrizione == null) {
             return view('errore');
         }
 
@@ -36,9 +32,10 @@ class controller_1 extends Controller
     }
 
     public function deleteTask(Request $request) {
-        $id = isset($request->id) ? $request->id : null;
+        $id = $request->has(id) ? $request->input("id") : null;
         
 
 
     }
 }
+ 

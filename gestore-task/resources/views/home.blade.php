@@ -35,10 +35,11 @@
     <label for="exampleInputPassword1" class="form-label">Descrizione</label>
     <input name="descrizione" type="text" class="form-control" id="exampleInputPassword1" required>
   </div>
-  <div class="mb-3">
-    <input name="completato" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <div class="form-check">
+    <input name="completato" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">Completato</label>
   </div>
   <button type="submit" class="btn btn-primary">OK</button>
 </form>
 
-<script src="{{ asset('assets/js/script.js') }}"></script>
+<!--<script src="{{ asset('assets/js/script.js') }}"></script>--!>
