@@ -13,11 +13,13 @@ class controller_1 extends Controller
     }
 
     public function addTask(Request $request) {
-        $nome = $request->has('nome') ? $request->input('nome') : null;
-        $descrizione = $request->has('descrizione') ? $request->input('descrizione') : null;
         $completato = $request->has('completato');
+        $nome = $request->has('nome') ? $request->input('nome') : null;
+        $date = $request->has('data') ? $request->input('data') : null;
+        $descrizione = $request->has('descrizione') ? $request->input('descrizione') : null;
         
-        if(!$nome || !$descrizione) {
+        
+        if(!$nome || !$descrizione || !$date) {
             return view('errore');
         }
 
@@ -26,6 +28,7 @@ class controller_1 extends Controller
         $task::create([
             "nome" => $nome,
             "descrizione" => $descrizione,
+            "data" => $date,
             "completato" => $completato
         ]);
         return redirect("/");

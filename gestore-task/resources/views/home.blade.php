@@ -8,6 +8,7 @@
       <th scope="col">ID</th>
       <th scope="col">Nome</th>
       <th scope="col">Descrizione</th>
+      <th scope="col">Scadenza</th>
       <th scope="col">Completato</th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
             <th><?= $task->id ?></th>
             <td><?= $task->nome ?></td>
             <td><?= $task->descrizione ?></td>
+            <td><?= $task->data ?></td>
             <td><?= $task->Completato ?></td>
         </tr>
       <?php } ?>
@@ -37,6 +39,11 @@
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Descrizione</label>
         <input name="descrizione" type="text" class="form-control" id="exampleInputPassword1" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Scadenza</label>
+        <input name="data" type="date" class="form-control" id="exampleInputPassword1" required>
       </div>
 
       <div class="form-check">
