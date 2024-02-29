@@ -17,7 +17,7 @@ class controller_1 extends Controller
         $descrizione = $request->has('descrizione') ? $request->input('descrizione') : null;
         $completato = $request->has('completato');
         
-        if($nome == null || $descrizione == null) {
+        if(!$nome || !$descrizione) {
             return view('errore');
         }
 
@@ -31,11 +31,60 @@ class controller_1 extends Controller
         return redirect("/");
     }
 
-    public function deleteTask(Request $request) {
-        $id = $request->has(id) ? $request->input("id") : null;
-        
+    public function deleteTask(Request $request) {  // Parametri: id: id del task da eliminare
+        $id = $request->has("id") ? $request->input("id") : null;
 
+        if (!$id) {
+            return view("errore");
+        }
 
+        if (tasks::find($id)) {  // Verifica l'esistenza del task
+            tasks::destroy($id);
+        } else {
+            return view("errore");
+        }
+
+        return redirect("/");
+    }
+
+    public function setName(Request $request) {  // Parametri: id: id del task da modificare, nome: nuovo nome da assegnare al task
+        $id = $request->has('id') ? $request->input('id') : null;
+        $name = $request->has('nome') ? $request->input('nome') : null;
+
+        if (!$id || !$name) {
+            return view('errore');
+        }
+
+        $task = tasks::find($id);  // Trova l'elemento dall'id
+
+        if ($task) {
+            $task->nome = $name;    // Imposta il nuovo nome
+            $task->save();          // Salva le modifiche
+        } else {
+            return view("errore");
+        }
+
+        return redirect("/");
+    }
+
+    public function setDescription(Request $request) {  // Parametri: id: id del task da modificare, descrizione: nuova descrizione da assegnare al task
+        $id = $request->has('id') ? $request->input('id') : null;
+        $description = $request->has('descrizione') ? $request->input('descrizione') : null;
+
+        if (!$id || !$description) {
+            return view('errore');
+        }
+
+        $task = tasks::find($id);  // Trova l'elemento dall'id
+
+        if ($task) {
+            $task->descrizione = $description;  // Imposta il nuovo nome
+            $task->save();                      // Salva le modifiche
+        } else {
+            return view('errore');
+        }
+
+        return redirect("/");
     }
 }
  

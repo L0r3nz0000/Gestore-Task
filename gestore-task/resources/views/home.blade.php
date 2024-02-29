@@ -24,22 +24,104 @@
   </tbody>
 </table>
 
-<h1>Aggiungi un task</h1>
-<form action="/add_task" method="POST">
-  @csrf
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Nome</label>
-    <input name="nome" type="text" class="form-control" id="exampleInputEmail1" required>
+<div class="container">
+  <div class="left-div">
+    <h2>Aggiungi un task</h2>
+    <form action="/add_task" method="POST">
+      @csrf
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nome</label>
+        <input name="nome" type="text" class="form-control" id="exampleInputEmail1" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Descrizione</label>
+        <input name="descrizione" type="text" class="form-control" id="exampleInputPassword1" required>
+      </div>
+
+      <div class="form-check">
+        <input name="completato" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
+        <label class="form-check-label" for="flexCheckChecked">Completato</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">OK</button>
+    </form>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Descrizione</label>
-    <input name="descrizione" type="text" class="form-control" id="exampleInputPassword1" required>
+
+  <div class="right-div">
+    <h2>Modifica nome di un task</h2>
+    <form action="/edit_task_name" method="POST">
+      @csrf
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">ID</label>
+        <input name="id" type="text" class="form-control" id="exampleInputEmail1" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Nuovo nome</label>
+        <input name="nome" type="text" class="form-control" id="exampleInputPassword1" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">OK</button>
+    </form>
   </div>
-  <div class="form-check">
-    <input name="completato" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
-    <label class="form-check-label" for="flexCheckChecked">Completato</label>
+</div>
+
+<div class="container">
+  <div class="left-div">
+    <h2>Elimina un task</h2>
+    <form action="/delete_task" method="POST">
+      @csrf
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">ID</label>
+        <input name="id" type="text" class="form-control" id="exampleInputEmail1" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">OK</button>
+    </form>
   </div>
-  <button type="submit" class="btn btn-primary">OK</button>
-</form>
+
+  <div class="right-div">
+    <h2>Modifica descrizione di un task</h2>
+    <form action="/edit_task_description" method="POST">
+      @csrf
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">ID</label>
+        <input name="id" type="text" class="form-control" id="exampleInputEmail1" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Nuova descrizione</label>
+        <input name="descrizione" type="text" class="form-control" id="exampleInputPassword1" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">OK</button>
+    </form>
+  </div>
+</div>
+
+<style>
+
+  .container {
+    display: flex;
+  }
+
+  .left-div, .right-div {
+    flex: 1;
+    margin: 10px;
+    padding: 15px;
+    border: 4px dotted white;
+    border-radius: 20px;
+  }
+
+  .left-div {
+    order: 1; /* per posizionare a sinistra */
+  }
+
+  .right-div {
+    order: 2; /* per posizionare a destra */
+  }
+</style>
+  
 
 <!--<script src="{{ asset('assets/js/script.js') }}"></script>--!>
